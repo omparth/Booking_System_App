@@ -11,7 +11,6 @@ export function Header({ onAddBooking, onCalendlyClick }: HeaderProps) {
     <header className="sticky top-0 z-40 w-full border-b border-slate-200/40 bg-white/40 backdrop-blur-xl dark:border-slate-900/50 dark:bg-[#090b0f]/40 transition-all duration-300">
       <div className="mx-auto flex max-w-6xl flex-col gap-5 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
         
-        {/* Left Section: Branding & Info */}
         <div className="space-y-1 group">
           <div className="flex items-center gap-3">
             <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-900/5 dark:bg-white/5 border border-slate-200/40 dark:border-slate-800/40 shadow-sm transition-all duration-300 group-hover:scale-105 group-hover:border-primary/30">
@@ -26,7 +25,6 @@ export function Header({ onAddBooking, onCalendlyClick }: HeaderProps) {
           </p>
         </div>
 
-        {/* Right Section: Premium CTA Actions */}
         <div className="flex flex-row items-center gap-2 sm:justify-end">
           <Button 
             variant="outline" 
