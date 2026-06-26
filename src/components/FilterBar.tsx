@@ -43,7 +43,6 @@ export function FilterBar({
     >
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         
-        {/* Search Field */}
         <div className="space-y-1.5 sm:col-span-2 lg:col-span-1">
           <Label 
             htmlFor="search" 
@@ -69,7 +68,6 @@ export function FilterBar({
           </div>
         </div>
 
-        {/* Status Filter */}
         <div className="space-y-1.5">
           <Label 
             htmlFor="status-filter" 
@@ -103,7 +101,6 @@ export function FilterBar({
           </Select>
         </div>
 
-        {/* Studio Filter */}
         <div className="space-y-1.5">
           <Label 
             htmlFor="studio-filter" 
@@ -138,7 +135,6 @@ export function FilterBar({
           </Select>
         </div>
 
-        {/* Sort Order */}
         <div className="space-y-1.5">
           <Label 
             htmlFor="sort-order" 
