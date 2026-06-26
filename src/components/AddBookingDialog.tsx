@@ -1,4 +1,3 @@
-//src/components/AddBookingDialog.tsx
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -103,11 +102,9 @@ export function AddBookingDialog({
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent className="sm:max-w-[520px] p-0 border border-slate-200/50 dark:border-slate-800/60 bg-white dark:bg-[#0c0e12] shadow-[0_24px_50px_-12px_rgba(0,0,0,0.25)] dark:shadow-[0_24px_50px_-12px_rgba(0,0,0,0.6)] overflow-hidden flex flex-col max-h-[92vh] rounded-2xl">
-        {/* Top Accent Premium Line */}
         <div className="h-[4px] w-full bg-gradient-to-r from-slate-900 via-slate-600 to-slate-400 dark:from-slate-800 dark:via-slate-500 dark:to-slate-700 shrink-0" />
         
         <div className="overflow-y-auto p-6 sm:p-7 space-y-6 flex-1 custom-scrollbar">
-          {/* Header section */}
           <DialogHeader className="space-y-1.5 text-left pb-4 border-b border-slate-100 dark:border-slate-900/60">
             <DialogTitle className="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-50">
               Create Booking Slot
@@ -122,7 +119,6 @@ export function AddBookingDialog({
             className="space-y-4 pt-2"
             noValidate
           >
-            {/* Input grid */}
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-1.5">
                 <Label htmlFor="studio" className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500">
@@ -167,7 +163,6 @@ export function AddBookingDialog({
               </div>
             </div>
 
-            {/* Date & Time Row */}
             <div className="grid gap-4 grid-cols-1 sm:grid-cols-3">
               <div className="space-y-1.5">
                 <Label htmlFor="date" className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500">
@@ -233,7 +228,6 @@ export function AddBookingDialog({
               </div>
             </div>
 
-            {/* Custom Premium Dropdown */}
             <div className="space-y-1.5">
               <Label htmlFor="status" className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500">
                 Initial Status <span className="text-rose-500 font-bold">*</span>
@@ -260,7 +254,6 @@ export function AddBookingDialog({
               </Select>
             </div>
 
-            {/* Notes Section */}
             <div className="space-y-1.5">
               <Label htmlFor="notes" className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500">Optional Notes</Label>
               <Textarea
@@ -272,7 +265,6 @@ export function AddBookingDialog({
               />
             </div>
 
-            {/* Premium Buttons Footer */}
             <DialogFooter className="pt-4 gap-2 sm:gap-0 border-t border-slate-100 dark:border-slate-900/60 mt-5 flex sm:flex-row items-center justify-end">
               <Button
                 type="button"
