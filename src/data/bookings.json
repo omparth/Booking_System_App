@@ -1,0 +1,60 @@
+[
+  {
+    "id": "bk-001",
+    "studio": "Studio A",
+    "client": "Acme Corp",
+    "date": "2026-06-28",
+    "startTime": "09:00",
+    "endTime": "12:00",
+    "status": "Confirmed",
+    "notes": "Podcast recording session"
+  },
+  {
+    "id": "bk-002",
+    "studio": "Studio B",
+    "client": "Bright Media",
+    "date": "2026-06-27",
+    "startTime": "14:00",
+    "endTime": "17:00",
+    "status": "Pending"
+  },
+  {
+    "id": "bk-003",
+    "studio": "Studio C",
+    "client": "Northwind Films",
+    "date": "2026-06-25",
+    "startTime": "10:00",
+    "endTime": "18:00",
+    "status": "Confirmed",
+    "notes": "Full-day music video shoot"
+  },
+  {
+    "id": "bk-004",
+    "studio": "Studio A",
+    "client": "Luna Design",
+    "date": "2026-06-22",
+    "startTime": "13:00",
+    "endTime": "15:00",
+    "status": "Cancelled",
+    "notes": "Client rescheduled"
+  },
+  {
+    "id": "bk-005",
+    "studio": "Studio D",
+    "client": "Peak Audio",
+    "date": "2026-06-30",
+    "startTime": "08:00",
+    "endTime": "11:00",
+    "status": "Confirmed"
+  },
+  {
+    "id": "bk-006",
+    "studio": "Studio B",
+    "client": "Horizon Agency",
+    "date": "2026-06-24",
+    "startTime": "09:30",
+    "endTime": "12:30",
+    "status": "Pending",
+    "notes": "Voice-over recording"
+  }
+]
