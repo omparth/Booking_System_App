@@ -63,45 +63,53 @@ function App() {
     addBooking(booking);
     toast.success("Booking logged successfully", {
       description: `${booking.client} booked ${booking.studio} for ${booking.date}`,
-      className: "rounded-xl border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 font-medium shadow-lg",
+      className: "rounded-2xl border-slate-100 dark:border-slate-800/80 bg-white dark:bg-slate-900 font-medium shadow-xl backdrop-blur-xl",
     });
   };
 
   const handleCalendlyClick = () => {
     toast.info("Calendly pipeline integration coming soon", {
       description: "This hook is currently simulated and ready for your production API tokens.",
-      className: "rounded-xl border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 font-medium shadow-lg",
+      className: "rounded-2xl border-slate-100 dark:border-slate-800/80 bg-white dark:bg-slate-900 font-medium shadow-xl backdrop-blur-xl",
     });
   };
 
   return (
-    <div className="min-h-screen bg-slate-50/60 dark:bg-slate-950 text-slate-900 dark:text-slate-50 antialiased selection:bg-primary/10 selection:text-primary">
+    <div className="min-h-screen bg-[#f8fafc] dark:bg-[#090b0f] text-slate-900 dark:text-slate-100 antialiased selection:bg-primary/10 selection:text-primary relative overflow-x-hidden">
+      {/* Premium background soft glow effects */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[400px] bg-gradient-to-b from-slate-100 to-transparent dark:from-slate-900/30 dark:to-transparent pointer-events-none blur-3xl opacity-70" />
+      
       <Header
         onAddBooking={() => setDialogOpen(true)}
         onCalendlyClick={handleCalendlyClick}
       />
 
-      <main className="mx-auto max-w-6xl space-y-6 px-4 py-8 sm:px-6 lg:px-8 animate-in fade-in slide-in-from-top-2 duration-300">
+      <main className="relative mx-auto max-w-6xl space-y-8 px-4 py-10 sm:px-6 lg:px-8 animate-in fade-in slide-in-from-top-4 duration-500 ease-out">
         
-        <FilterBar
-          filters={filters}
-          studios={studios}
-          onFiltersChange={setFilters}
-        />
+        {/* Filter Section Card wrap for premium layout */}
+        <div className="bg-white/60 dark:bg-slate-900/40 border border-slate-200/50 dark:border-slate-800/50 rounded-2xl p-4 sm:p-5 backdrop-blur-md shadow-sm">
+          <FilterBar
+            filters={filters}
+            studios={studios}
+            onFiltersChange={setFilters}
+          />
+        </div>
 
-        <div className="flex items-center justify-between border-b border-slate-200/60 dark:border-slate-900 pb-3">
-          <div className="space-y-0.5">
-            <h2 className="text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+        {/* Section Header */}
+        <div className="flex items-end justify-between border-b border-slate-200/60 dark:border-slate-800/60 pb-4">
+          <div className="space-y-1.5">
+            <h2 className="text-[10px] font-bold tracking-[0.2em] uppercase text-slate-400 dark:text-slate-500">
               Active Timeline Matrix
             </h2>
-            <p className="text-sm font-semibold text-slate-500 dark:text-slate-400">
-              Showing {filteredBookings.length}{" "}
+            <p className="text-sm font-medium text-slate-500 dark:text-slate-400">
+              Showing <span className="font-semibold text-slate-900 dark:text-slate-100">{filteredBookings.length}</span>{" "}
               {filteredBookings.length === 1 ? "registered slot" : "registered slots"}
             </p>
           </div>
         </div>
 
-        <div className="relative rounded-2xl border border-slate-200/50 bg-white/40 dark:border-slate-900/50 dark:bg-slate-950/20 p-1 backdrop-blur-[2px]">
+        {/* Premium Main Content Card container */}
+        <div className="relative rounded-2xl border border-slate-200/60 bg-white/70 dark:border-slate-900/60 dark:bg-slate-950/40 p-2 shadow-[0_8px_30px_rgb(0,0,0,0.02)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] backdrop-blur-md transition-all duration-300">
           <BookingList
             bookings={filteredBookings}
             hasBookings={bookings.length > 0}
@@ -121,7 +129,8 @@ function App() {
         position="top-right"
         toastOptions={{
           style: {
-            boxShadow: '0 10px 30px -10px rgba(0,0,0,0.08)',
+            boxShadow: '0 20px 40px -15px rgba(0,0,0,0.1)',
+            borderRadius: '1rem',
           }
         }}
       />

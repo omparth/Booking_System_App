@@ -38,39 +38,42 @@ export function FilterBar({
 
   return (
     <section
-      className="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-[0_4px_16px_-4px_rgba(0,0,0,0.02)] dark:border-slate-800/80 dark:bg-slate-950 transition-all duration-200"
+      className="w-full transition-all duration-300 ease-out"
       aria-label="Booking filters"
     >
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        <div className="space-y-2 sm:col-span-2 lg:col-span-1">
+        
+        {/* Search Field */}
+        <div className="space-y-1.5 sm:col-span-2 lg:col-span-1">
           <Label 
             htmlFor="search" 
-            className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400"
+            className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400 dark:text-slate-500"
           >
-            Search
+            Search Matrix
           </Label>
           <div className="relative group">
             <Search
-              className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400 transition-colors duration-200 group-focus-within:text-primary"
+              className="absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400/80 transition-colors duration-200 group-focus-within:text-slate-800 dark:group-focus-within:text-slate-200"
               aria-hidden="true"
             />
             <Input
               id="search"
               type="search"
-              placeholder="Search studio or client..."
+              placeholder="Studio or client..."
               value={filters.search}
               onChange={(e) => updateFilter("search", e.target.value)}
               className={cn(
-                "pl-9 bg-slate-50/50 border-slate-200 focus-visible:bg-white dark:bg-slate-900/40 dark:border-slate-800 dark:focus-visible:bg-slate-950 shadow-[inset_0_1px_2px_rgba(0,0,0,0.01)] transition-all duration-200"
+                "pl-9 h-9 text-xs bg-slate-50/40 border-slate-200/60 focus-visible:bg-white dark:bg-slate-950/40 dark:border-slate-800/60 dark:focus-visible:bg-slate-950 shadow-none transition-all duration-200 rounded-xl focus-visible:ring-1 focus-visible:ring-slate-400/60 dark:focus-visible:ring-slate-700/60 focus-visible:border-transparent"
               )}
             />
           </div>
         </div>
 
-        <div className="space-y-2">
+        {/* Status Filter */}
+        <div className="space-y-1.5">
           <Label 
             htmlFor="status-filter" 
-            className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400"
+            className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400 dark:text-slate-500"
           >
             Status
           </Label>
@@ -82,13 +85,17 @@ export function FilterBar({
           >
             <SelectTrigger 
               id="status-filter" 
-              className="bg-slate-50/50 border-slate-200 dark:bg-slate-900/40 dark:border-slate-800 shadow-[inset_0_1px_2px_rgba(0,0,0,0.01)]"
+              className="h-9 text-xs bg-slate-50/40 border-slate-200/60 dark:bg-slate-950/40 dark:border-slate-800/60 shadow-none rounded-xl focus:ring-1 focus:ring-slate-400/60 dark:focus:ring-slate-700/60 transition-all duration-200 text-slate-700 dark:text-slate-300 font-medium"
             >
               <SelectValue placeholder="Filter by status" />
             </SelectTrigger>
-            <SelectContent className="border-slate-200/80 dark:border-slate-800/80">
+            <SelectContent className="border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.12)] z-50 p-1 min-w-[8rem] overflow-hidden">
               {STATUS_OPTIONS.map((option) => (
-                <SelectItem key={option.value} value={option.value} className="text-sm">
+                <SelectItem 
+                  key={option.value} 
+                  value={option.value} 
+                  className="text-xs text-slate-700 dark:text-slate-300 rounded-lg py-2 pl-8 pr-2 relative font-medium transition-colors focus:bg-slate-100 focus:text-slate-900 dark:focus:bg-slate-800 dark:focus:text-slate-50 data-[state=checked]:bg-slate-50 dark:data-[state=checked]:bg-slate-800/50"
+                >
                   {option.label}
                 </SelectItem>
               ))}
@@ -96,12 +103,13 @@ export function FilterBar({
           </Select>
         </div>
 
-        <div className="space-y-2">
+        {/* Studio Filter */}
+        <div className="space-y-1.5">
           <Label 
             htmlFor="studio-filter" 
-            className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400"
+            className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400 dark:text-slate-500"
           >
-            Studio
+            Studio Profile
           </Label>
           <Select
             value={filters.studio}
@@ -109,14 +117,20 @@ export function FilterBar({
           >
             <SelectTrigger 
               id="studio-filter" 
-              className="bg-slate-50/50 border-slate-200 dark:bg-slate-900/40 dark:border-slate-800 shadow-[inset_0_1px_2px_rgba(0,0,0,0.01)]"
+              className="h-9 text-xs bg-slate-50/40 border-slate-200/60 dark:bg-slate-950/40 dark:border-slate-800/60 shadow-none rounded-xl focus:ring-1 focus:ring-slate-400/60 dark:focus:ring-slate-700/60 transition-all duration-200 text-slate-700 dark:text-slate-300 font-medium"
             >
               <SelectValue placeholder="Filter by studio" />
             </SelectTrigger>
-            <SelectContent className="border-slate-200/80 dark:border-slate-800/80">
-              <SelectItem value="all" className="text-sm">All Studios</SelectItem>
+            <SelectContent className="border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.12)] z-50 p-1 min-w-[8rem] overflow-hidden">
+              <SelectItem value="all" className="text-xs text-slate-700 dark:text-slate-300 rounded-lg py-2 pl-8 pr-2 relative font-medium transition-colors focus:bg-slate-100 focus:text-slate-900 dark:focus:bg-slate-800 dark:focus:text-slate-50 data-[state=checked]:bg-slate-50 dark:data-[state=checked]:bg-slate-800/50">
+                All Studios
+              </SelectItem>
               {studios.map((studio) => (
-                <SelectItem key={studio} value={studio} className="text-sm">
+                <SelectItem 
+                  key={studio} 
+                  value={studio} 
+                  className="text-xs text-slate-700 dark:text-slate-300 rounded-lg py-2 pl-8 pr-2 relative font-medium transition-colors focus:bg-slate-100 focus:text-slate-900 dark:focus:bg-slate-800 dark:focus:text-slate-50 data-[state=checked]:bg-slate-50 dark:data-[state=checked]:bg-slate-800/50"
+                >
                   {studio}
                 </SelectItem>
               ))}
@@ -124,12 +138,13 @@ export function FilterBar({
           </Select>
         </div>
 
-        <div className="space-y-2">
+        {/* Sort Order */}
+        <div className="space-y-1.5">
           <Label 
             htmlFor="sort-order" 
-            className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400"
+            className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400 dark:text-slate-500"
           >
-            Sort by Date
+            Chronology
           </Label>
           <Select
             value={filters.sortOrder}
@@ -139,16 +154,21 @@ export function FilterBar({
           >
             <SelectTrigger 
               id="sort-order" 
-              className="bg-slate-50/50 border-slate-200 dark:bg-slate-900/40 dark:border-slate-800 shadow-[inset_0_1px_2px_rgba(0,0,0,0.01)]"
+              className="h-9 text-xs bg-slate-50/40 border-slate-200/60 dark:bg-slate-950/40 dark:border-slate-800/60 shadow-none rounded-xl focus:ring-1 focus:ring-slate-400/60 dark:focus:ring-slate-700/60 transition-all duration-200 text-slate-700 dark:text-slate-300 font-medium"
             >
               <SelectValue placeholder="Sort order" />
             </SelectTrigger>
-            <SelectContent className="border-slate-200/80 dark:border-slate-800/80">
-              <SelectItem value="newest" className="text-sm">Newest First</SelectItem>
-              <SelectItem value="oldest" className="text-sm">Oldest First</SelectItem>
+            <SelectContent className="border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.12)] z-50 p-1 min-w-[8rem] overflow-hidden">
+              <SelectItem value="newest" className="text-xs text-slate-700 dark:text-slate-300 rounded-lg py-2 pl-8 pr-2 relative font-medium transition-colors focus:bg-slate-100 focus:text-slate-900 dark:focus:bg-slate-800 dark:focus:text-slate-50 data-[state=checked]:bg-slate-50 dark:data-[state=checked]:bg-slate-800/50">
+                Newest First
+              </SelectItem>
+              <SelectItem value="oldest" className="text-xs text-slate-700 dark:text-slate-300 rounded-lg py-2 pl-8 pr-2 relative font-medium transition-colors focus:bg-slate-100 focus:text-slate-900 dark:focus:bg-slate-800 dark:focus:text-slate-50 data-[state=checked]:bg-slate-50 dark:data-[state=checked]:bg-slate-800/50">
+                Oldest First
+              </SelectItem>
             </SelectContent>
           </Select>
         </div>
+
       </div>
     </section>
   );

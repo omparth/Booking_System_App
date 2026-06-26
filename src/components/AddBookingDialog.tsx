@@ -102,135 +102,140 @@ export function AddBookingDialog({
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogContent className="sm:max-w-[540px] p-0 border border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-slate-950 shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
-        <div className="h-1.5 w-full bg-gradient-to-r from-violet-500 via-primary to-emerald-400 shrink-0" />
+      <DialogContent className="sm:max-w-[520px] p-0 border border-slate-200/50 dark:border-slate-800/60 bg-white dark:bg-[#0c0e12] shadow-[0_24px_50px_-12px_rgba(0,0,0,0.25)] dark:shadow-[0_24px_50px_-12px_rgba(0,0,0,0.6)] overflow-hidden flex flex-col max-h-[92vh] rounded-2xl">
+        {/* Top Accent Premium Line */}
+        <div className="h-[4px] w-full bg-gradient-to-r from-slate-900 via-slate-600 to-slate-400 dark:from-slate-800 dark:via-slate-500 dark:to-slate-700 shrink-0" />
         
-        <div className="overflow-y-auto p-6 sm:p-8 space-y-6 custom-scrollbar flex-1">
-          <DialogHeader className="space-y-1.5 text-left pb-4 border-b border-slate-100 dark:border-slate-900">
-            <DialogTitle className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-50">
-              Create Booking
+        <div className="overflow-y-auto p-6 sm:p-7 space-y-6 flex-1 custom-scrollbar">
+          {/* Header section */}
+          <DialogHeader className="space-y-1.5 text-left pb-4 border-b border-slate-100 dark:border-slate-900/60">
+            <DialogTitle className="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-50">
+              Create Booking Slot
             </DialogTitle>
-            <DialogDescription className="text-sm text-slate-500 dark:text-slate-400">
+            <DialogDescription className="text-xs font-medium text-slate-400 dark:text-slate-500">
               Set up a new studio timeline slot. Required properties are marked with <span className="text-rose-500 font-semibold">*</span>.
             </DialogDescription>
           </DialogHeader>
 
           <form
             onSubmit={handleSubmit(handleFormSubmit)}
-            className="space-y-5"
+            className="space-y-4 pt-2"
             noValidate
           >
-            <div className="grid gap-5 sm:grid-cols-2">
-              <div className="space-y-2">
-                <Label htmlFor="studio" className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+            {/* Input grid */}
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="space-y-1.5">
+                <Label htmlFor="studio" className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500">
                   Studio Space <span className="text-rose-500 font-bold">*</span>
                 </Label>
                 <Input
                   id="studio"
                   placeholder="e.g. Studio A"
                   className={cn(
-                    "bg-slate-50/50 border-slate-200 text-slate-900 placeholder:text-slate-400 focus-visible:bg-white dark:bg-slate-900/40 dark:border-slate-800 dark:text-white dark:focus-visible:bg-slate-900 transition-all duration-200",
-                    errors.studio && "border-rose-500/50 focus-visible:ring-rose-500/10 dark:border-rose-500/50"
+                    "h-9 text-xs bg-slate-50/40 border-slate-200/60 text-slate-900 placeholder:text-slate-400 focus-visible:bg-white dark:bg-slate-950/40 dark:border-slate-800/60 dark:text-white dark:focus-visible:bg-slate-950 transition-all duration-200 rounded-xl focus-visible:ring-1 focus-visible:ring-slate-400/60 dark:focus-visible:ring-slate-700/60 focus-visible:border-transparent shadow-none",
+                    errors.studio && "border-rose-500/40 focus-visible:ring-rose-500/10 dark:border-rose-500/40"
                   )}
                   aria-invalid={!!errors.studio}
                   {...register("studio")}
                 />
                 {errors.studio && (
-                  <p className="text-xs font-medium text-rose-500 mt-1 animate-in fade-in slide-in-from-top-1" role="alert">
+                  <p className="text-[11px] font-medium text-rose-500 mt-1 animate-in fade-in slide-in-from-top-1" role="alert">
                     {errors.studio.message}
                   </p>
                 )}
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="client" className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+              <div className="space-y-1.5">
+                <Label htmlFor="client" className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500">
                   Client Name <span className="text-rose-500 font-bold">*</span>
                 </Label>
                 <Input
                   id="client"
                   placeholder="e.g. Acme Corp"
                   className={cn(
-                    "bg-slate-50/50 border-slate-200 text-slate-900 dark:text-white placeholder:text-slate-400 focus-visible:bg-white dark:bg-slate-900/40 dark:border-slate-800 dark:focus-visible:bg-slate-900 transition-all duration-200",
-                    errors.client && "border-rose-500/50 focus-visible:ring-rose-500/10 dark:border-rose-500/50"
+                    "h-9 text-xs bg-slate-50/40 border-slate-200/60 text-slate-900 dark:text-white placeholder:text-slate-400 focus-visible:bg-white dark:bg-slate-950/40 dark:border-slate-800/60 dark:focus-visible:bg-slate-950 transition-all duration-200 rounded-xl focus-visible:ring-1 focus-visible:ring-slate-400/60 dark:focus-visible:ring-slate-700/60 focus-visible:border-transparent shadow-none",
+                    errors.client && "border-rose-500/40 focus-visible:ring-rose-500/10 dark:border-rose-500/40"
                   )}
                   aria-invalid={!!errors.client}
                   {...register("client")}
                 />
                 {errors.client && (
-                  <p className="text-xs font-medium text-rose-500 mt-1 animate-in fade-in slide-in-from-top-1" role="alert">
+                  <p className="text-[11px] font-medium text-rose-500 mt-1 animate-in fade-in slide-in-from-top-1" role="alert">
                     {errors.client.message}
                   </p>
                 )}
               </div>
             </div>
 
-            <div className="grid gap-5 grid-cols-1 sm:grid-cols-3">
-              <div className="space-y-2">
-                <Label htmlFor="date" className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+            {/* Date & Time Row */}
+            <div className="grid gap-4 grid-cols-1 sm:grid-cols-3">
+              <div className="space-y-1.5">
+                <Label htmlFor="date" className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500">
                   Target Date <span className="text-rose-500 font-bold">*</span>
                 </Label>
                 <Input
                   id="date"
                   type="date"
                   className={cn(
-                    "bg-slate-50/50 border-slate-200 text-slate-900 dark:text-white placeholder:text-slate-400 focus-visible:bg-white dark:bg-slate-900/40 dark:border-slate-800 dark:focus-visible:bg-slate-900 transition-all duration-200",
-                    errors.date && "border-rose-500/50 focus-visible:ring-rose-500/10 dark:border-rose-500/50"
+                    "h-9 text-xs bg-slate-50/40 border-slate-200/60 text-slate-900 dark:text-white placeholder:text-slate-400 focus-visible:bg-white dark:bg-slate-950/40 dark:border-slate-800/60 dark:focus-visible:bg-slate-950 transition-all duration-200 rounded-xl focus-visible:ring-1 focus-visible:ring-slate-400/60 dark:focus-visible:ring-slate-700/60 focus-visible:border-transparent shadow-none",
+                    errors.date && "border-rose-500/40 focus-visible:ring-rose-500/10 dark:border-rose-500/40"
                   )}
                   aria-invalid={!!errors.date}
                   {...register("date")}
                 />
                 {errors.date && (
-                  <p className="text-xs font-medium text-rose-500 mt-1 animate-in fade-in slide-in-from-top-1" role="alert">
+                  <p className="text-[11px] font-medium text-rose-500 mt-1 animate-in fade-in slide-in-from-top-1" role="alert">
                     {errors.date.message}
                   </p>
                 )}
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="startTime" className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+              <div className="space-y-1.5">
+                <Label htmlFor="startTime" className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500">
                   Start Time <span className="text-rose-500 font-bold">*</span>
                 </Label>
                 <Input
                   id="startTime"
                   type="time"
                   className={cn(
-                    "bg-slate-50/50 border-slate-200 text-slate-900 dark:text-white placeholder:text-slate-400 focus-visible:bg-white dark:bg-slate-900/40 dark:border-slate-800 dark:focus-visible:bg-slate-900 transition-all duration-200",
-                    errors.startTime && "border-rose-500/50 focus-visible:ring-rose-500/10 dark:border-rose-500/50"
+                    "h-9 text-xs bg-slate-50/40 border-slate-200/60 text-slate-900 dark:text-white placeholder:text-slate-400 focus-visible:bg-white dark:bg-slate-950/40 dark:border-slate-800/60 dark:focus-visible:bg-slate-950 transition-all duration-200 rounded-xl focus-visible:ring-1 focus-visible:ring-slate-400/60 dark:focus-visible:ring-slate-700/60 focus-visible:border-transparent shadow-none",
+                    errors.startTime && "border-rose-500/40 focus-visible:ring-rose-500/10 dark:border-rose-500/40"
                   )}
                   aria-invalid={!!errors.startTime}
                   {...register("startTime")}
                 />
                 {errors.startTime && (
-                  <p className="text-xs font-medium text-rose-500 mt-1 animate-in fade-in slide-in-from-top-1" role="alert">
+                  <p className="text-[11px] font-medium text-rose-500 mt-1 animate-in fade-in slide-in-from-top-1" role="alert">
                     {errors.startTime.message}
                   </p>
                 )}
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="endTime" className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+              <div className="space-y-1.5">
+                <Label htmlFor="endTime" className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500">
                   End Time <span className="text-rose-500 font-bold">*</span>
                 </Label>
                 <Input
                   id="endTime"
                   type="time"
                   className={cn(
-                    "bg-slate-50/50 border-slate-200 text-slate-900 dark:text-white placeholder:text-slate-400 focus-visible:bg-white dark:bg-slate-900/40 dark:border-slate-800 dark:focus-visible:bg-slate-900 transition-all duration-200",
-                    errors.endTime && "border-rose-500/50 focus-visible:ring-rose-500/10 dark:border-rose-500/50"
+                    "h-9 text-xs bg-slate-50/40 border-slate-200/60 text-slate-900 dark:text-white placeholder:text-slate-400 focus-visible:bg-white dark:bg-slate-950/40 dark:border-slate-800/60 dark:focus-visible:bg-slate-950 transition-all duration-200 rounded-xl focus-visible:ring-1 focus-visible:ring-slate-400/60 dark:focus-visible:ring-slate-700/60 focus-visible:border-transparent shadow-none",
+                    errors.endTime && "border-rose-500/40 focus-visible:ring-rose-500/10 dark:border-rose-500/40"
                   )}
                   aria-invalid={!!errors.endTime}
                   {...register("endTime")}
                 />
                 {errors.endTime && (
-                  <p className="text-xs font-medium text-rose-500 mt-1 animate-in fade-in slide-in-from-top-1" role="alert">
+                  <p className="text-[11px] font-medium text-rose-500 mt-1 animate-in fade-in slide-in-from-top-1" role="alert">
                     {errors.endTime.message}
                   </p>
                 )}
               </div>
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="status" className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+            {/* Custom Premium Dropdown */}
+            <div className="space-y-1.5">
+              <Label htmlFor="status" className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500">
                 Initial Status <span className="text-rose-500 font-bold">*</span>
               </Label>
               <Select
@@ -243,42 +248,44 @@ export function AddBookingDialog({
               >
                 <SelectTrigger 
                   id="status" 
-                  className="bg-slate-50/50 border-slate-200 text-slate-900 dark:bg-slate-900/40 dark:border-slate-800 dark:text-white focus:bg-white dark:focus:bg-slate-900 transition-all duration-200"
+                  className="h-9 text-xs bg-slate-50/40 border-slate-200/60 text-slate-700 dark:bg-slate-950/40 dark:border-slate-800/60 dark:text-slate-300 focus:bg-white dark:focus:bg-slate-950 transition-all duration-200 rounded-xl focus:ring-1 focus:ring-slate-400/60 dark:focus:ring-slate-700/60 font-medium"
                 >
                   <SelectValue placeholder="Select status" />
                 </SelectTrigger>
-                <SelectContent className="bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 border border-slate-200/80 dark:border-slate-800/80 shadow-xl">
-                  <SelectItem value="Confirmed" className="text-sm cursor-pointer focus:bg-slate-100 dark:focus:bg-slate-900 focus:text-slate-900 dark:focus:text-slate-50">Confirmed</SelectItem>
-                  <SelectItem value="Pending" className="text-sm cursor-pointer focus:bg-slate-100 dark:focus:bg-slate-900 focus:text-slate-900 dark:focus:text-slate-50">Pending</SelectItem>
-                  <SelectItem value="Cancelled" className="text-sm cursor-pointer focus:bg-slate-100 dark:focus:bg-slate-900 focus:text-slate-900 dark:focus:text-slate-50">Cancelled</SelectItem>
+                <SelectContent className="bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 shadow-[0_10px_40px_rgba(0,0,0,0.15)] rounded-xl z-[60] p-1 overflow-hidden">
+                  <SelectItem value="Confirmed" className="text-xs font-medium cursor-pointer focus:bg-slate-100 dark:focus:bg-slate-800 rounded-lg py-2 pl-8 relative transition-colors focus:text-slate-900 dark:focus:text-slate-50 data-[state=checked]:bg-slate-50 dark:data-[state=checked]:bg-slate-800/50">Confirmed</SelectItem>
+                  <SelectItem value="Pending" className="text-xs font-medium cursor-pointer focus:bg-slate-100 dark:focus:bg-slate-800 rounded-lg py-2 pl-8 relative transition-colors focus:text-slate-900 dark:focus:text-slate-50 data-[state=checked]:bg-slate-50 dark:data-[state=checked]:bg-slate-800/50">Pending</SelectItem>
+                  <SelectItem value="Cancelled" className="text-xs font-medium cursor-pointer focus:bg-slate-100 dark:focus:bg-slate-800 rounded-lg py-2 pl-8 relative transition-colors focus:text-slate-900 dark:focus:text-slate-50 data-[state=checked]:bg-slate-50 dark:data-[state=checked]:bg-slate-800/50">Cancelled</SelectItem>
                 </SelectContent>
               </Select>
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="notes" className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Optional Notes</Label>
+            {/* Notes Section */}
+            <div className="space-y-1.5">
+              <Label htmlFor="notes" className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500">Optional Notes</Label>
               <Textarea
                 id="notes"
-                placeholder="Add any technical context, hardware setup, or rider requests..."
+                placeholder="Add any technical context or specific setup requests..."
                 rows={3}
-                className="resize-none bg-slate-50/50 border-slate-200 text-slate-900 placeholder:text-slate-400 focus-visible:bg-white dark:bg-slate-900/40 dark:border-slate-800 dark:text-white dark:focus-visible:bg-slate-900 transition-all duration-200"
+                className="resize-none text-xs bg-slate-50/40 border-slate-200/60 text-slate-900 placeholder:text-slate-400 focus-visible:bg-white dark:bg-slate-950/40 dark:border-slate-800/60 dark:text-white dark:focus-visible:bg-slate-950 transition-all duration-200 rounded-xl focus-visible:ring-1 focus-visible:ring-slate-400/60 dark:focus-visible:ring-slate-700/60 focus-visible:border-transparent shadow-none"
                 {...register("notes")}
               />
             </div>
 
-            <DialogFooter className="pt-4 gap-2 sm:gap-2 border-t border-slate-100 dark:border-slate-900 mt-6">
+            {/* Premium Buttons Footer */}
+            <DialogFooter className="pt-4 gap-2 sm:gap-0 border-t border-slate-100 dark:border-slate-900/60 mt-5 flex sm:flex-row items-center justify-end">
               <Button
                 type="button"
                 variant="outline"
                 onClick={() => handleOpenChange(false)}
-                className="w-full sm:w-auto font-medium border-slate-200 dark:border-slate-800 dark:text-slate-300 transition-all duration-200 active:scale-98"
+                className="w-full sm:w-auto text-xs font-semibold h-9 px-4 border-slate-200 dark:border-slate-800/80 dark:text-slate-300 transition-all duration-200 active:scale-[0.98] rounded-xl bg-transparent"
               >
                 Cancel
               </Button>
               <Button 
                 type="submit" 
                 disabled={!isValid}
-                className="w-full sm:w-auto font-medium shadow-[0_2px_4px_rgba(0,0,0,0.05)] transition-all duration-200 active:scale-98 disabled:opacity-50"
+                className="w-full sm:w-auto text-xs font-semibold h-9 px-4 sm:ml-2 bg-gradient-to-b from-slate-900 to-slate-800 hover:from-slate-800 hover:to-slate-700 text-white dark:from-slate-50 dark:to-slate-100 dark:text-slate-900 dark:hover:from-white dark:hover:to-slate-200 shadow-none transition-all duration-200 active:scale-[0.98] disabled:opacity-40 rounded-xl border-none"
               >
                 Add Booking
               </Button>
